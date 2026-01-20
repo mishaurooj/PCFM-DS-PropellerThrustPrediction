@@ -3,64 +3,71 @@
 ```{=html}
 <p align="center">
 ```
-`<img src="Results/PCFM-DS.png" width="720"/>`{=html}
+`<img src="Results/PCFM-DS.png" width="720" alt="PCFM-DS Overview"/>`{=html}
 ```{=html}
 </p>
 ```
-> **IEEE Q1--ready research repository** for\
+> **IEEE Q1--ready research repository**\
 > **Physics-Compressed Cascaded Feature Micro-Models (Dual Scale)**\
-> enabling **cross-scale, interpretable, and data-efficient propeller
-> thrust prediction**.
+> for **cross-scale, interpretable, and data-efficient propeller thrust
+> prediction**
 
 ------------------------------------------------------------------------
 
 ## 🔍 Research Motivation & Gaps
 
-Accurate propeller thrust modeling is critical for **Advanced Air
-Mobility (AAM)** and **Distributed Electric Propulsion (DEP)** systems.\
-However, existing approaches suffer from:
+Accurate propeller thrust modeling is a cornerstone of **Advanced Air
+Mobility (AAM)** and\
+**Distributed Electric Propulsion (DEP)** system design. Existing
+approaches, however, suffer from:
 
--   ❌ **CFD dependency** → high computational cost\
--   ❌ **Pure black-box ML** → poor extrapolation & interpretability\
--   ❌ **Dimensional learning** → scale sensitivity\
+-   ❌ **CFD dependency** → prohibitive computational cost\
+-   ❌ **Pure black-box ML** → poor extrapolation and interpretability\
+-   ❌ **Dimensional learning** → severe scale sensitivity\
 -   ❌ **Lack of cross-scale validation**\
 -   ❌ **Poor data efficiency**
 
 ### 🧩 Research Gap Addressed
 
-PCFM-DS fills the missing link between **physics-based scaling** and
-**data-driven learning** by: - Explicitly separating **deterministic
-physics** from **learned aerodynamics** - Learning only in a
-**low-dimensional nondimensional space** - Enabling **cross-scale
-transfer** from small UAV propellers to large AAM propellers
+PCFM-DS bridges the gap between **physics-based scaling laws** and
+**data-driven learning** by:
+
+-   Explicitly separating **deterministic physics** from **learned
+    aerodynamics**
+-   Learning exclusively in a **low-dimensional, nondimensional space**
+-   Enabling **robust cross-scale transfer** from small UAV propellers
+    to large AAM propellers
 
 ------------------------------------------------------------------------
 
 ## ✨ Key Novelty (Why PCFM-DS is New)
 
-✔ Physics-compressed **cascaded learning formulation**\
-✔ Explicit **thrust reconstruction using analytical scaling laws**\
-✔ **Dual-scale micro-models** without added complexity\
-✔ **Millisecond training**, constant-time inference\
-✔ Robust under **90% data reduction**\
-✔ First framework validated on **heterogeneous small + large propeller
-datasets**
+-   ✅ Physics-compressed **cascaded learning formulation**
+-   ✅ Explicit **analytical thrust reconstruction**
+-   ✅ **Dual-scale micro-models** without added complexity
+-   ✅ **Millisecond-level training**, constant-time inference
+-   ✅ Robust under **90% data reduction**
+-   ✅ First framework validated on **heterogeneous small + large
+    propeller datasets**
 
 ------------------------------------------------------------------------
 
 ## 🧠 Core Idea: Physics-Compressed Cascade
 
-Instead of learning thrust directly: \[ (V, D, RPM)
-`\rightarrow `{=tex}T \]
+Instead of learning thrust directly:
 
-PCFM-DS reformulates the task as:
+    (V, D, RPM) → T
 
-\[ (V, D, RPM) `\rightarrow `{=tex}J `\rightarrow `{=tex}C_T
-`\rightarrow `{=tex}T \]
+PCFM-DS reformulates the task as a structured cascade:
 
-Where: - **J**: Advance ratio (physics-normalized operating point) -
-**C`<sub>`{=html}T`</sub>`{=html}**: Thrust coefficient (learned
-aerodynamics) - **T**: Dimensional thrust (analytically reconstructed)
+    (V, D, RPM) → J → C_T → T
+
+Where: - **J** : Advance ratio (physics-normalized operating point) -
+**C_T** : Thrust coefficient (learned aerodynamics) - **T** :
+Dimensional thrust (analytically reconstructed)
+
+This reformulation removes scale effects from learning and enforces
+physical consistency.
 
 ------------------------------------------------------------------------
 
@@ -69,48 +76,74 @@ aerodynamics) - **T**: Dimensional thrust (analytically reconstructed)
 ```{=html}
 <p align="center">
 ```
-`<img src="Results/Figures/PCFM_DS_architecture.png" width="760"/>`{=html}
+`<img src="Results/Figures/PCFM_DS_architecture.png" width="760" alt="PCFM-DS Architecture"/>`{=html}
 ```{=html}
 </p>
 ```
-### Module M1 -- Operating Point Normalization
+### 🔹 Module M1 -- Operating Point Normalization
 
-\[ J = `\frac{V}{nD}`{=tex}, `\quad `{=tex}n = `\frac{RPM}{60}`{=tex} \]
+-   Rotational frequency:
 
-### Module M2 -- Dual-Scale Aerodynamic Micro-Models
+```{=html}
+<!-- -->
+```
+    n = RPM / 60
 
-Separate polynomial micro-models: \[ C_T = a_0 + a_1 J + a_2 J\^2 \]
+-   Advance ratio:
 
-### Module M3 -- Physics-Constrained Reconstruction
+```{=html}
+<!-- -->
+```
+    J = V / (nD)
 
-\[ T = C_T `\rho `{=tex}n\^2 D\^4 \]
+### 🔹 Module M2 -- Dual-Scale Aerodynamic Micro-Models
+
+Separate low-order polynomial models are trained for small and large
+propellers:
+
+    C_T = a0 + a1·J + a2·J²
+
+This captures Reynolds-number-dependent aerodynamic trends without
+increasing model size.
+
+### 🔹 Module M3 -- Physics-Constrained Thrust Reconstruction
+
+Dimensional thrust is reconstructed analytically:
+
+    T = C_T · ρ · n² · D⁴
 
 ✔ No learned scaling\
-✔ Guaranteed dimensional consistency
+✔ Guaranteed dimensional consistency\
+✔ Bounded extrapolation behavior
 
 ------------------------------------------------------------------------
 
 ## 📊 Datasets & Experimental Setup
 
-### Paired Dataset Statistics
+### 📈 Paired Dataset Statistics
 
 ```{=html}
 <p align="center">
 ```
-`<img src="Results/paired_2xN_dataset_stats.png" width="720"/>`{=html}
+`<img src="Results/paired_2xN_dataset_stats.png" width="720" alt="Dataset Statistics"/>`{=html}
 ```{=html}
 </p>
 ```
-### Large-Scale Experimental Validation
+-   **Small propellers**: UAV-scale, diverse geometries (UIUC database)
+-   **Large propellers**: AAM-scale, controlled in-house experiments
+
+### 🧪 Large-Scale Experimental Validation
 
 ```{=html}
 <p align="center">
 ```
-`<img src="Results/big_propeller_experimental_setup.png" width="340"/>`{=html}
-`<img src="Results/CT_vs_J.png" width="420"/>`{=html}
+`<img src="Results/big_propeller_experimental_setup.png" width="340" alt="Experimental Setup"/>`{=html}
+`<img src="Results/CT_vs_J.png" width="420" alt="CT vs J"/>`{=html}
 ```{=html}
 </p>
 ```
+-   (Left) Calibrated thrust test rig
+-   (Right) Distinct CT--J trends across propeller scales
 
 ------------------------------------------------------------------------
 
@@ -126,7 +159,7 @@ Separate polynomial micro-models: \[ C_T = a_0 + a_1 J + a_2 J\^2 \]
   UAV fault     UAV sensors ✓          ✗          ✗          ✗          No thrust model
   diagnosis                                                             
 
-  Marine        Marine      ✗          ✓          ✓          ✗          No transfer
+  Marine        Marine      ✗          ✓          ✓          ✗          No cross-scale
   propellers                                                            
 
   CFD propeller CFD         ✓          ✗          ✗          ✗          High cost
@@ -147,8 +180,8 @@ Separate polynomial micro-models: \[ C_T = a_0 + a_1 J + a_2 J\^2 \]
   (This work)** Large                                                   
   --------------------------------------------------------------------------------------
 
-**ML**: machine learning, **ND**: nondimensional, **Phys**: physics
-scaling, **XS**: cross-scale
+**ML**: machine learning, **ND**: nondimensional learning,\
+**Phys**: explicit physics scaling, **XS**: cross-scale validation
 
 ------------------------------------------------------------------------
 
@@ -165,10 +198,10 @@ scaling, **XS**: cross-scale
   PCFM-Base     0.50        225         0.023       0.61        No scale
                                                                 separation
 
-  **PCFM-DS**   **0.80**    **143**     **0.015**   **0.92**    **Robust &
-                                                                interpretable**
+  **PCFM-DS**   **0.80**    **143**     **0.015**   **0.92**    Robust &
+                                                                interpretable
 
-  PCFM-DS (No   0.43        320         0.033       \~0         Physics broken
+  PCFM-DS (No   0.43        320         0.033       ≈ 0         Physics broken
   Cascade)                                                      
   -------------------------------------------------------------------------------
 
@@ -197,7 +230,7 @@ scaling, **XS**: cross-scale
   Ridge           225                  10+
   **PCFM-DS**     **1.2**              **3**
 
-✔ Real-time ready\
+✔ Real-time capable\
 ✔ Edge-deployable
 
 ------------------------------------------------------------------------
@@ -211,19 +244,19 @@ scaling, **XS**: cross-scale
   PCA (6)                 0.65       6       0.29
   **Advance Ratio (J)**   **0.65**   **1**   **0.47**
 
-➡ Physics-derived features outperform statistical compression
+➡ Physics-derived features outperform statistical compression.
 
 ------------------------------------------------------------------------
 
 ## ⚖️ Ethics, Safety & Explainability
 
-  Metric                PCFM-DS
-  --------------------- ---------
-  Ethical Simplicity    Low
-  Fail-through Safety   Yes
-  FLOPs                 O(1)
-  Decision Robustness   4 / 4
-  Feature Count         1
+  Metric                     PCFM-DS
+  -------------------------- ---------
+  Ethical Simplicity Index   Low
+  Fail-through Safety        Yes
+  FLOPs                      O(1)
+  Decision Robustness        4 / 4
+  Feature Count              1
 
 ------------------------------------------------------------------------
 
@@ -258,7 +291,17 @@ scaling, **XS**: cross-scale
 @article{PCFMDS2025,
   title={Physics-Compressed Cascaded Micro-Models for Cross-Scale Propeller Thrust Prediction},
   author={Alam, M. I. and Khan, M. U. and Suleman, A. and Kaleem, Z.},
-  journal={IEEE},
-  year={2026}
+  journal={IEEE Access},
+  year={2025}
 }
-If you find this work useful, **please star ⭐ the repository**.
+```
+
+------------------------------------------------------------------------
+
+## ⭐ Final Remarks
+
+✔ Reviewer-grade\
+✔ Physics-first ML\
+✔ Ready for journal, thesis, and industry review
+
+If you find this work useful, please **star ⭐ the repository**.
