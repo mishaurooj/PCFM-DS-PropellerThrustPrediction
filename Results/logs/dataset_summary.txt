@@ -1,0 +1,41 @@
+============================================================
+Run ID: PCFM_RUN_20260114_205029
+Output root: /content/drive/MyDrive/Propeller/PCFM_Results/PCFM_RUN_20260114_205029
+============================================================
+
+--- Small (prepared) ---
+Rows: 180993
+Columns: 11
+Missing (key cols):
+V           0
+diameter    0
+pitch       0
+rpm         0
+Thrust      0
+J           0
+CT          0
+
+--- Big (prepared) ---
+Rows: 64260
+Columns: 11
+Missing (key cols):
+V           0
+diameter    0
+pitch       0
+rpm         0
+Thrust      0
+J           0
+CT          0
+
+--- Combined (prepared) ---
+Rows: 245253
+Columns: 11
+Missing (key cols):
+V           0
+diameter    0
+pitch       0
+rpm         0
+Thrust      0
+J           0
+CT          0
+

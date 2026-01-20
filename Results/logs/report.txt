@@ -1,0 +1,59 @@
+============================================================
+RUN: PCFM_RUN_20260114_205029
+OUT: /content/drive/MyDrive/Propeller/PCFM_Results/PCFM_RUN_20260114_205029
+============================================================
+
+Top results by Split (max R2):
+
+--- B1_small_in ---
+          Model TrainFrac       R2          MAE          NTE      ESI          PCE  MonotonicConsistency                          ModelFile
+    PhysicsOnly        NA 1.000000 6.520716e-16 6.410898e-18       NA           NA                    NA                                   
+       RawML_rf       1.0 0.980362 6.545355e-01 6.435121e-03       NA           NA                    NA        RawML_rf_B1_small_in.joblib
+PCFM_Base_poly2       1.0 0.723407 2.659075e+00 2.614292e-02 0.000083 1.604424e-18              1.000000 PCFM_Base_poly2_B1_small_in.joblib
+  PCFM_DS_poly2       1.0 0.723407 2.659075e+00 2.614292e-02 0.000083 1.604160e-18              1.000000   PCFM_DS_poly2_B1_small_in.joblib
+PCFM_Base_poly3       1.0 0.723245 2.659069e+00 2.614287e-02 0.000083 1.666938e-18              0.999675 PCFM_Base_poly3_B1_small_in.joblib
+
+--- B2_big_in ---
+          Model TrainFrac       R2          MAE          NTE  ESI          PCE  MonotonicConsistency                        ModelFile
+    PhysicsOnly        NA 1.000000 1.006540e-13 1.023180e-17   NA           NA                    NA                                 
+       RawML_rf       1.0 0.999686 1.315593e+01 1.337342e-03   NA           NA                    NA        RawML_rf_B2_big_in.joblib
+   RawML_linreg       1.0 0.736807 5.077081e+02 5.161014e-02   NA           NA                    NA    RawML_linreg_B2_big_in.joblib
+    RawML_ridge       1.0 0.736807 5.077050e+02 5.160983e-02   NA           NA                    NA     RawML_ridge_B2_big_in.joblib
+PCFM_Base_poly3       1.0 0.659334 5.379644e+02 5.468579e-02  0.0 6.382789e-18                   1.0 PCFM_Base_poly3_B2_big_in.joblib
+
+--- B3_trainSmall_testBig ---
+        Model TrainFrac        R2         MAE      NTE  ESI          PCE  MonotonicConsistency                                  ModelFile
+PCFM_DS_poly2       1.0 -0.177782 1021.158002 0.103804   NA 1.447485e-18                   1.0 PCFM_DS_poly2_B3_trainSmall_testBig.joblib
+PCFM_DS_poly3       1.0 -0.178119 1021.408321 0.103829   NA 1.345873e-18                   1.0 PCFM_DS_poly3_B3_trainSmall_testBig.joblib
+ RawML_linreg       1.0 -0.775786 1250.335905 0.127101   NA           NA                    NA  RawML_linreg_B3_trainSmall_testBig.joblib
+  RawML_ridge       1.0 -0.775790 1250.338352 0.127101   NA           NA                    NA   RawML_ridge_B3_trainSmall_testBig.joblib
+     RawML_rf       1.0 -0.939626 1365.961498 0.138854   NA           NA                    NA      RawML_rf_B3_trainSmall_testBig.joblib
+
+--- B4_trainBig_testSmall ---
+        Model TrainFrac            R2          MAE        NTE  ESI          PCE  MonotonicConsistency                                  ModelFile
+PCFM_DS_poly2       1.0 -2.471965e+01    30.116185   0.296090   NA 6.965538e-18              0.999796 PCFM_DS_poly2_B4_trainBig_testSmall.joblib
+PCFM_DS_poly3       1.0 -2.474786e+01    30.123667   0.296163   NA 6.924517e-18              0.999837 PCFM_DS_poly3_B4_trainBig_testSmall.joblib
+     RawML_rf       1.0 -5.570225e+04  2189.679393  21.528019   NA           NA                    NA      RawML_rf_B4_trainBig_testSmall.joblib
+  RawML_ridge       1.0 -2.983464e+06 13026.500073 128.071142   NA           NA                    NA   RawML_ridge_B4_trainBig_testSmall.joblib
+ RawML_linreg       1.0 -2.983564e+06 13026.709927 128.073205   NA           NA                    NA  RawML_linreg_B4_trainBig_testSmall.joblib
+
+--- B7_mix_in ---
+        Model TrainFrac       R2          MAE          NTE  ESI          PCE  MonotonicConsistency                      ModelFile
+  PhysicsOnly        NA 1.000000 2.671717e-14 2.729090e-18   NA           NA                    NA                               
+     RawML_rf       1.0 0.999824 3.896320e+00 3.979990e-04   NA           NA                    NA      RawML_rf_B7_mix_in.joblib
+PCFM_DS_poly3       1.0 0.799411 1.429298e+02 1.459991e-02  0.0 2.959482e-18              0.919442 PCFM_DS_poly3_B7_mix_in.joblib
+PCFM_DS_poly2       1.0 0.799389 1.429346e+02 1.460039e-02  0.0 3.019684e-18              0.919800 PCFM_DS_poly2_B7_mix_in.joblib
+  RawML_ridge       1.0 0.598618 2.904035e+02 2.966396e-02   NA           NA                    NA   RawML_ridge_B7_mix_in.joblib
+
+--- C_limitedData_mix ---
+        Model TrainFrac       R2        MAE      NTE      ESI          PCE  MonotonicConsistency                       ModelFile
+PCFM_DS_poly3       1.0 0.799411 142.929779 0.014600 0.000000 2.959482e-18              0.919442  PCFM_DS_poly3_C_frac1.0.joblib
+PCFM_DS_poly2       1.0 0.799389 142.934562 0.014600 0.000000 3.019684e-18              0.919800  PCFM_DS_poly2_C_frac1.0.joblib
+PCFM_DS_poly3       0.5 0.799378 142.876299 0.014594 0.000000 2.996793e-18              0.919589  PCFM_DS_poly3_C_frac0.5.joblib
+PCFM_DS_poly3      0.25 0.799363 142.783591 0.014585 0.000014 2.975839e-18              0.919644 PCFM_DS_poly3_C_frac0.25.joblib
+PCFM_DS_poly2      0.25 0.799350 142.787325 0.014585 0.000014 3.026085e-18              0.920155 PCFM_DS_poly2_C_frac0.25.joblib
+
+Derived fairness / robustness diagnostics:
+DEF_PCFM_DS: 1.0971793757101835
+DEF_PCFM_Base: 1.0971793757101835
+DEF_RawML_ridge: 0.5849913684319494

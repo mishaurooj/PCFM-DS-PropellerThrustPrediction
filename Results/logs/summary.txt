@@ -1,0 +1,29 @@
+FEATURE OPTIMIZATION STUDY SUMMARY
+=================================
+
+Correlation ranking:
+diameter    0.673580
+CT          0.587183
+rpm         0.369556
+pitch       0.214975
+J           0.068658
+V           0.003873
+
+Permutation ranking:
+diameter    1.305733
+J           0.445580
+V           0.422335
+pitch       0.275851
+CT          0.093304
+rpm         0.012301
+
+Best single feature:
+NumFeatures            1
+Features        diameter
+R2              0.453216
+MAE            325.25114
+
+Best PCA result:
+NumPCs      6.000000
+R2          0.652957
+MAE       299.417587
