@@ -1,13 +1,8 @@
 # 🚀 PCFM-DS: Physics-Compressed Dual-Scale Propeller Thrust Prediction
 
-```{=html}
 <p align="center">
-```
-`<img src="Results/PCFM-DS.png" width="720" alt="PCFM-DS Overview"/>`{=html}
-```{=html}
+  <img src="Results/PCFM-DS.png" width="700"/>
 </p>
-```
-> **IEEE Q1--ready research repository**\
 > **Physics-Compressed Cascaded Feature Micro-Models (Dual Scale)**\
 > for **cross-scale, interpretable, and data-efficient propeller thrust
 > prediction**
