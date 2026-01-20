@@ -1,8 +1,4 @@
 # 🚀 PCFM-DS: Physics-Compressed Dual-Scale Propeller Thrust Prediction
-
-<p align="center">
-  <img src="Results/PCFM-DS.png" width="700"/>
-</p>
 > **Physics-Compressed Cascaded Feature Micro-Models (Dual Scale)**\
 > for **cross-scale, interpretable, and data-efficient propeller thrust
 > prediction**
@@ -68,13 +64,9 @@ physical consistency.
 
 ## 🧩 Model Architecture (PCFM-DS)
 
-```{=html}
 <p align="center">
-```
-`<img src="Results/Figures/PCFM_DS_architecture.png" width="760" alt="PCFM-DS Architecture"/>`{=html}
-```{=html}
+  <img src="Results/PCFM-DS.png" width="700"/>
 </p>
-```
 ### 🔹 Module M1 -- Operating Point Normalization
 
 -   Rotational frequency:
@@ -117,26 +109,19 @@ Dimensional thrust is reconstructed analytically:
 
 ### 📈 Paired Dataset Statistics
 
-```{=html}
 <p align="center">
-```
-`<img src="Results/paired_2xN_dataset_stats.png" width="720" alt="Dataset Statistics"/>`{=html}
-```{=html}
+  <img src="Results/paired_2xN_dataset_stats.png" width="700"/>
 </p>
-```
 -   **Small propellers**: UAV-scale, diverse geometries (UIUC database)
 -   **Large propellers**: AAM-scale, controlled in-house experiments
 
 ### 🧪 Large-Scale Experimental Validation
 
-```{=html}
 <p align="center">
-```
-`<img src="Results/big_propeller_experimental_setup.png" width="340" alt="Experimental Setup"/>`{=html}
-`<img src="Results/CT_vs_J.png" width="420" alt="CT vs J"/>`{=html}
-```{=html}
+  <img src="big_propeller_experimental_setup.png" width="700"/>
+  <img src="Results/CT_vs_J.png" width="700"/>
 </p>
-```
+
 -   (Left) Calibrated thrust test rig
 -   (Right) Distinct CT--J trends across propeller scales
 
@@ -291,11 +276,6 @@ Dimensional thrust is reconstructed analytically:
 }
 ```
 
-------------------------------------------------------------------------
-
-## ⭐ Final Remarks
-
-✔ Reviewer-grade\
 ✔ Physics-first ML\
 ✔ Ready for journal, thesis, and industry review
 
