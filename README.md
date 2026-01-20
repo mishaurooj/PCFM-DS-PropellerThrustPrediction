@@ -67,6 +67,7 @@ physical consistency.
 <p align="center">
   <img src="Results/PCFM-DS.png" width="700"/>
 </p>
+
 ### 🔹 Module M1 -- Operating Point Normalization
 
 -   Rotational frequency:
@@ -106,6 +107,7 @@ Dimensional thrust is reconstructed analytically:
 <p align="center">
   <img src="Results/paired_2xN_dataset_stats.png" width="700"/>
 </p>
+
 -   **Small propellers**: UAV-scale, diverse geometries (UIUC database)
 -   **Large propellers**: AAM-scale, controlled in-house experiments
 
