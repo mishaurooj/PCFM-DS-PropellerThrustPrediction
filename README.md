@@ -71,16 +71,10 @@ physical consistency.
 
 -   Rotational frequency:
 
-```{=html}
-<!-- -->
-```
     n = RPM / 60
 
 -   Advance ratio:
 
-```{=html}
-<!-- -->
-```
     J = V / (nD)
 
 ### 🔹 Module M2 -- Dual-Scale Aerodynamic Micro-Models
@@ -118,135 +112,29 @@ Dimensional thrust is reconstructed analytically:
 ### 🧪 Large-Scale Experimental Validation
 
 <p align="center">
-  <img src="big_propeller_experimental_setup.png" width="700"/>
+  <img src="Results/ig_propeller_experimental_setup.png" width="700"/>
   <img src="Results/CT_vs_J.png" width="700"/>
 </p>
-
--   (Left) Calibrated thrust test rig
--   (Right) Distinct CT--J trends across propeller scales
+   (Right) Distinct CT--J trends across propeller scales
 
 ------------------------------------------------------------------------
+| Domain / Application            | Dataset / Scale              |   ML  |   ND  |  Phys |   XS  | Key Limitations                              |
+| ------------------------------- | ---------------------------- | :---: | :---: | :---: | :---: | -------------------------------------------- |
+| Electric thrusters              | Lab-scale thrusters          |   ✓   |   ✗   |   ✗   |   ✗   | Scale-specific; no aerodynamic normalization |
+| UAV fault diagnosis             | UAV onboard sensors          |   ✓   |   ✗   |   ✗   |   ✗   | Fault detection only; thrust not modeled     |
+| Marine propellers               | Marine propellers            |   ✗   |   ✓   |   ✓   |   ✗   | Limited adaptability across geometries       |
+| CFD-based propeller design      | CFD-generated designs        |   ✓   |   ✗   |   ✗   |   ✗   | High computational cost; CFD-dependent       |
+| ML-assisted propeller design    | CFD / simulated designs      |   ✓   |   ✗   |   ✗   |   ✗   | No cross-scale validation                    |
+| UAV propulsion performance maps | Experimental UAV tests       |   ✗   |   ✓   |   ✓   |   ✗   | Manual calibration; non-predictive           |
+| Propeller noise prediction      | Acoustic propeller datasets  |   ✓   |   ✗   |   ✗   |   ✗   | Noise-focused; thrust not addressed          |
+| Multi-objective UUV control     | Simulated UUV data           |   ✓   |   ✗   |   ✗   |   ✗   | Application-specific; no thrust scaling      |
+| **PCFM-DS (This work)**         | **Small + large propellers** | **✓** | **✓** | **✓** | **✓** | **None (cross-scale, physics-consistent)**   |
 
-## 🧪 Capability-Based Comparison (Literature Gap)
+Abbreviations:
+ML – Machine Learning | ND – Nondimensional Learning |
+Phys – Explicit Physics Scaling | XS – Cross-Scale Validation
 
-  --------------------------------------------------------------------------------------
-  Domain /      Dataset /   ML         ND         Phys       XS         Key Limitations
-  Application   Scale                                                   
-  ------------- ----------- ---------- ---------- ---------- ---------- ----------------
-  Electric      Lab-scale   ✓          ✗          ✗          ✗          Scale-specific
-  thrusters                                                             
 
-  UAV fault     UAV sensors ✓          ✗          ✗          ✗          No thrust model
-  diagnosis                                                             
-
-  Marine        Marine      ✗          ✓          ✓          ✗          No cross-scale
-  propellers                                                            
-
-  CFD propeller CFD         ✓          ✗          ✗          ✗          High cost
-  design                                                                
-
-  ML-assisted   CFD         ✓          ✗          ✗          ✗          No XS
-  design                                                                
-
-  Performance   UAV tests   ✗          ✓          ✓          ✗          Manual
-  maps                                                                  
-
-  Noise         Acoustic    ✓          ✗          ✗          ✗          No thrust
-  prediction                                                            
-
-  UUV control   Simulated   ✓          ✗          ✗          ✗          App-specific
-
-  **PCFM-DS     Small +     ✓          ✓          ✓          ✓          ---
-  (This work)** Large                                                   
-  --------------------------------------------------------------------------------------
-
-**ML**: machine learning, **ND**: nondimensional learning,\
-**Phys**: explicit physics scaling, **XS**: cross-scale validation
-
-------------------------------------------------------------------------
-
-## 📈 Architecture Ablation (Why Each Component Matters)
-
-  -------------------------------------------------------------------------------
-  Model         R²          MAE         NTE         PCE         Remarks
-  ------------- ----------- ----------- ----------- ----------- -----------------
-  Raw-ML        0.60        290         0.030       0.60        Scale-sensitive
-  (Ridge)                                                       
-
-  Random Forest 0.79        186         0.018       0.79        Overfits
-
-  PCFM-Base     0.50        225         0.023       0.61        No scale
-                                                                separation
-
-  **PCFM-DS**   **0.80**    **143**     **0.015**   **0.92**    Robust &
-                                                                interpretable
-
-  PCFM-DS (No   0.43        320         0.033       ≈ 0         Physics broken
-  Cascade)                                                      
-  -------------------------------------------------------------------------------
-
-➡ Cascading + physics compression are **essential**.
-
-------------------------------------------------------------------------
-
-## 📉 Data Efficiency (Limited Data Regime)
-
-  Training Data   R²      MAE
-  --------------- ------- -------
-  100%            0.799   142.9
-  25%             0.799   142.8
-  10%             0.799   142.5
-  Raw-ML (10%)    0.599   290.7
-
-➡ **90% data reduction with no performance loss**
-
-------------------------------------------------------------------------
-
-## ⚡ Computational Efficiency
-
-  Model           Training Time (ms)   Parameters
-  --------------- -------------------- ------------
-  Random Forest   540                  100+
-  Ridge           225                  10+
-  **PCFM-DS**     **1.2**              **3**
-
-✔ Real-time capable\
-✔ Edge-deployable
-
-------------------------------------------------------------------------
-
-## 🧠 Feature Efficiency & Physics Alignment
-
-  Feature                 R²         Dim     PAES
-  ----------------------- ---------- ------- ----------
-  Diameter                0.45       1       0.33
-  RPM                     0.65       1       0.47
-  PCA (6)                 0.65       6       0.29
-  **Advance Ratio (J)**   **0.65**   **1**   **0.47**
-
-➡ Physics-derived features outperform statistical compression.
-
-------------------------------------------------------------------------
-
-## ⚖️ Ethics, Safety & Explainability
-
-  Metric                     PCFM-DS
-  -------------------------- ---------
-  Ethical Simplicity Index   Low
-  Fail-through Safety        Yes
-  FLOPs                      O(1)
-  Decision Robustness        4 / 4
-  Feature Count              1
-
-------------------------------------------------------------------------
-
-## 📚 Comparison with State-of-the-Art
-
-  Method        Physics   Cost           Generalization
-  ------------- --------- -------------- -----------------
-  CFD           ✓         High           High
-  Pure ML       ✗         Low            Poor
-  **PCFM-DS**   ✓         **Very Low**   **Cross-scale**
 
 ------------------------------------------------------------------------
 
