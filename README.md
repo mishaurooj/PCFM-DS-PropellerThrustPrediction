@@ -220,7 +220,4 @@ Phys – Explicit Physics Scaling | XS – Cross-Scale Validation
 }
 ```
 
-✔ Physics-first ML\
-✔ Ready for journal, thesis, and industry review
-
 If you find this work useful, please **star ⭐ the repository**.
